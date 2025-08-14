@@ -127,8 +127,7 @@ python examples/DNABERT_3mers/single_BO_inference.py \
   --r_primer 3_primer
 ```
 ## A pipeline for optimizing public transcription factor binding specificity using InstructNA
-To validation the performance of InstructNA. We use the public SELEX datasets from [DNA-Binding **Specificities
-of Human Transcription Factors**](https://www.cell.com/cell/pdf/S0092-8674(12)01496-1.pdf), and the PBM data from the [**Evaluation of methods for modeling transcription factor sequence specificity**](https://www.nature.com/articles/nbt.2486). The pipeline script is as follows:
+To validation the performance of InstructNA. We use the public SELEX datasets from [**DNA-Binding Specificities of Human Transcription Factors**](https://www.cell.com/cell/pdf/S0092-8674(12)01496-1.pdf), and the PBM data from the [**Evaluation of methods for modeling transcription factor sequence specificity**](https://www.nature.com/articles/nbt.2486). The pipeline script is as follows:
 ```bash
 python examples/DNABERT_3mers/TFs_InstrcutNA_pipeline.py \
   --fastq_dir  /path/to/SELEX_fastq\
