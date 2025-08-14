@@ -57,7 +57,7 @@ def parse_fastq_filename(filename):
 
 
 
-def get_top_sequences_from_fastq(fastq_path: str, top_n: int = 10) -> Tuple[List[Tuple[str, int]], List[Tuple[str, int]]]:
+def get_top_sequences_from_fastq(fastq_path: str, top_n: int = 10): 
     """
     Extract the top N most frequent sequences from a FASTQ file.
 
