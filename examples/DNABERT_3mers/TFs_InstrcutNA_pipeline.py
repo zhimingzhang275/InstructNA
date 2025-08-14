@@ -56,31 +56,31 @@ def parse_fastq_filename(filename):
     
 
 
-def get_top_sequences_from_fastq(fastq_path, top_n=10):
+
+def get_top_sequences_from_fastq(fastq_path: str, top_n: int = 10) -> Tuple[List[Tuple[str, int]], List[Tuple[str, int]]]:
     """
-    提取FASTQ文件中出现频率最高的前N条序列。
+    Extract the top N most frequent sequences from a FASTQ file.
 
-    参数:
-        fastq_path (str): FASTQ文件路径。
-        top_n (int): 提取的序列数量，按频次排序。
+    Args:
+        fastq_path (str): Path to the FASTQ file.
+        top_n (int): Number of top sequences to extract, sorted by frequency.
 
-    返回:
-        List[Tuple[str, int]]: [(序列, 频次), ...]
-        List[Tuple[str, int]]: [(序列, 频次), ...] 所有序列的频次列表
+    Returns:
+        Tuple[List[Tuple[str, int]], List[Tuple[str, int]]]:
+            - List of the top N sequences with their counts [(sequence, count), ...]
+            - List of all sequences with their counts [(sequence, count), ...]
     """
     sequence_counter = Counter()
     
     with open(fastq_path, "r") as f:
         line_idx = 0
         for line in f:
-            if line_idx % 4 == 1:  
+            if line_idx % 4 == 1:  # Sequence lines in FASTQ appear every 4 lines
                 seq = line.strip()
                 sequence_counter[seq] += 1
             line_idx += 1
 
-
-    return sequence_counter.most_common(top_n),sequence_counter.most_common()      
-
+    return sequence_counter.most_common(top_n), sequence_counter.most_common()
 
 
 
