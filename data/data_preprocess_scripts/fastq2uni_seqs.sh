@@ -1,0 +1,1 @@
+python fastq2uni_seqs.py --fastq_file ../test_data/Srebf1_TACATT20NCG_Z_4.fastq --output_csv ../test_data/unique_seqs.csv
