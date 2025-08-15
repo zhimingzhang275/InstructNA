@@ -27,7 +27,23 @@ def is_valid_three_way_junction(structure: str) -> bool:
     return valid_bulges >= 2
 
 
-# def check_conditions_1(seq):
+def check_conditions(seq):
+    "宽松支架条件检查：P1和P3的5'端必须是GCCG，且P1和P3的3'端必须是互补的。"
+    model = nupack.Model(material="dna", celsius=25,sodium=0.14,magnesium=0.005)  
+    result = nupack.mfe(strands=[seq], model=model)  
+    ss=str(result[0].structure)
+    P1_c1=ss[1:6]
+    P1_c2=ss[-5:]
+    P3_c1=ss[17:20]
+    P3_c2=ss[-8:-5]
+    if (set(P1_c1).issubset({'('}) or set(P1_c2).issubset({')'})) \
+        and (set(P3_c1).issubset({'('}) or set(P3_c2).issubset({')'})) \
+        and seq[16:20]=="GCCG" \
+        and is_valid_three_way_junction(ss):
+        return ss
+    return False
+
+# def check_conditions_origin(seq):
 #     "宽松支架条件检查：P1和P3的5'端必须是GCCG，且P1和P3的3'端必须是互补的。"
 #     model = nupack.Model(material="dna", celsius=25,sodium=0.14,magnesium=0.005)  
 #     result = nupack.mfe(strands=[seq], model=model)  
@@ -63,21 +79,21 @@ def is_valid_three_way_junction(structure: str) -> bool:
 #     print(f"Sequence {seq} does not meet the conditions.")
 #     return False
 
-def check_conditions(seq):
+# def check_conditions_T10(seq):
     
-    "宽松支架条件检查：P1和P3的5'端必须是GCCG，且P1和P3的3'端必须是互补的。"
-    model = nupack.Model(material="dna", celsius=25,sodium=0.14,magnesium=0.005)  
-    result = nupack.mfe(strands=[seq], model=model)  
-    ss=str(result[0].structure)
-    P1_c1=ss[1:6]
-    P1_c2=ss[-5:]
-    P3_c1=ss[16:19]
-    P3_c2=ss[30:33]
-    if (set(P1_c1).issubset({'('}) and set(P1_c2).issubset({')'})) \
-    and (set(P3_c1).issubset({'('}) and set(P3_c2).issubset({')'})) \
-    and seq[16:20]=="GCCG" \
-    and seq[30:33]=="GGC" \
-    and is_valid_three_way_junction(ss):
-        return ss
-    print(f"Sequence {seq} does not meet the conditions.")
-    return False
+#     "宽松支架条件检查：P1和P3的5'端必须是GCCG，且P1和P3的3'端必须是互补的。"
+#     model = nupack.Model(material="dna", celsius=25,sodium=0.14,magnesium=0.005)  
+#     result = nupack.mfe(strands=[seq], model=model)  
+#     ss=str(result[0].structure)
+#     P1_c1=ss[1:6]
+#     P1_c2=ss[-5:]
+#     P3_c1=ss[16:19]
+#     P3_c2=ss[30:33]
+#     if (set(P1_c1).issubset({'('}) and set(P1_c2).issubset({')'})) \
+#     and (set(P3_c1).issubset({'('}) and set(P3_c2).issubset({')'})) \
+#     and seq[16:20]=="GCCG" \
+#     and seq[30:33]=="GGC" \
+#     and is_valid_three_way_junction(ss):
+#         return ss
+#     print(f"Sequence {seq} does not meet the conditions.")
+#     return False

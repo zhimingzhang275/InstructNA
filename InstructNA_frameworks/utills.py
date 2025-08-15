@@ -821,7 +821,7 @@ def repair(tokens):
 
 
 def DNABERT_mask_seq_genernate_nolinkers(input_embedding, decode_model, encode_model, tokenizer ,lowest_probs_mask_ratio=0.15,
-                       pre_link=None, rever_link=None, iterative_optimize=3, top_k=10, top_p=1, temperature=1):
+                       pre_link=None, rever_link=None, iterative_optimize=3, top_k=20, top_p=1, temperature=1):
     logits = decode_model(input_embedding)
 
     once_mask_token_probability = torch.softmax(logits, dim=2)

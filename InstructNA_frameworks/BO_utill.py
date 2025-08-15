@@ -290,7 +290,8 @@ def run_one_grouped_BO(
                         print(f"Duplicate {core_seq}, {unique_gen_tries}st retrying...")
                         print(f"Increasing search radius from {cur_search_r:.4f} to {tmp_cur_search_r:.4f}")
                         print(f"Increasing sampling temperature to {sample_T:.2f}")
-                    if not check_conditions(generated_seq):
+                    if not check_conditions(generated_seq) and not (core_seq in generated_seq_set):
+                        unique_gen_tries=0
                         tmp_cur_search_r = cur_search_r
                         sample_T=1
                     next_point = HEBO_suggest(seq_KD, seq_embedding, num_to_gen=1,search_r=cur_search_r,max=max_object)[0]
