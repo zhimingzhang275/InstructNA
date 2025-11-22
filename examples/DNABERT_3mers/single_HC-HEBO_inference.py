@@ -9,23 +9,23 @@ def get_args():
     parser = argparse.ArgumentParser(description="HC-HEBO for sequence generation")
 
     parser.add_argument("--SELEX_path", type=str, default=None, help="SELEX unique sequences file path, format: one unique sequence per line")
-    parser.add_argument("--seq_act_path", type=str, default=None, help="Sequence active file path, format: seq,activity")
+    parser.add_argument("--seq_act_path", type=str, default="/home/hanlab/2022_zzm/InstructNA_new/data/function_SELEX/IFN-gama/functional_label/label_data.csv", help="Sequence active file path, format: seq,activity")
 
-    parser.add_argument("--encoder_model_path", type=str, default=None, help="Path to encoder model checkpoint")
-    parser.add_argument("--decoder_model_path", type=str, default=None, help="Path to decoder model checkpoint")
+    parser.add_argument("--encoder_model_path", type=str, default="/home/hanlab/2022_zzm/InstructNA_new/output/model_save/DNABERT_3mers/function_SELEX/IFN-gama/encoder", help="Path to encoder model checkpoint")
+    parser.add_argument("--decoder_model_path", type=str, default="/home/hanlab/2022_zzm/InstructNA_new/output/model_save/DNABERT_3mers/function_SELEX/IFN-gama/decoder", help="Path to decoder model checkpoint")
     parser.add_argument("--BO_output_dir", type=str, default="./", help="Output directory for BO results")
     
     
     parser.add_argument("--seed_num", type=int, default=42, help="Random seed")
     parser.add_argument("--search_r", type=float, default=5.0, help="Initial search radius")
-    parser.add_argument("--max", type=bool, default=False, help="Maximize or minimize the objective")
-    parser.add_argument("--use_filter", type=bool, default=False, help="Use filter for sequence selection")
+    parser.add_argument("--max", action='store_true', help="Maximize or minimize the objective")
+    parser.add_argument("--use_filter", action='store_true', help="Use filter for sequence selection")
 
-    parser.add_argument("--HC_HEBO_batchsize", type=int, default=20, help="Number of sequences to generate per BO cycle")
+    parser.add_argument("--HC_HEBO_batchsize", type=int, default=2, help="Number of sequences to generate per BO cycle")
     parser.add_argument("--model_down_dim", type=int, default=8, help="Dimension of reduced latent space")
     
-    parser.add_argument("--f_primer", type=str, default=None, help="5'primer")
-    parser.add_argument("--r_primer", type=str, default=None, help="3'primer")
+    parser.add_argument("--f_primer", type=str, default="CGGTTCAG", help="5'primer")
+    parser.add_argument("--r_primer", type=str, default="CTGAACCG", help="3'primer")
 
     
     return parser.parse_args()
@@ -90,10 +90,11 @@ if __name__ == "__main__":
 
 
     SELEX_seqs=[]
-    with open(SELEX_path,"r") as f:
-        lines=f.readlines()
-        for line in lines:
-            SELEX_seqs.append(line.strip())
+    if SELEX_path is not None:
+        with open(SELEX_path,"r") as f:
+            lines=f.readlines()
+            for line in lines:
+                SELEX_seqs.append(line.strip())
             
     
     seeds_and_acts={}
