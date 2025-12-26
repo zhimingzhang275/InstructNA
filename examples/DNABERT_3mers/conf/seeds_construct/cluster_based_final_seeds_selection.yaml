@@ -1,0 +1,5 @@
+defaults:
+  - _self_
+  - base/base.yaml
+
+selection_k: 10

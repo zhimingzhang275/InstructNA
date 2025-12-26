@@ -1,0 +1,24 @@
+
+defaults:
+  - _self_
+
+paths:
+  SELEX_path: null # must be provided, format is one sequence per line
+  seq_act_path: /home/hanlab/2022_zzm/InstructNA_new/output/bo_results/funtional_SELEX/IL-2/HC-HEBO_gen_seq.csv
+  InstructNA_model_path: /home/hanlab/2022_zzm/InstructNA_new/output/model_save/
+  BO_output_dir: /home/hanlab/2022_zzm/InstructNA_new/output/bo_results/
+
+primer:
+  f_primer: null
+  r_primer: null
+
+seed:
+  seed_num: 42
+
+hc_hebo:
+  search_r: 2.5 # embedding radius for hc-hebo
+  batchsize: 1  # number of sequences to generate in each group
+  maximize: true # whether to maximize or minimize the sequence activity
+  use_filter: false
+
+

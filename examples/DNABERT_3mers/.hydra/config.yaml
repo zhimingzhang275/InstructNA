@@ -1,0 +1,27 @@
+dataset:
+  dir: /home/hanlab/2022_zzm/InstructNA_new/data/function_SELEX/IL-2/R4/InstructNA_seq_input.txt
+  train_val_split_ratio: 0.9
+dataloader:
+  num_worker: 8
+run:
+  mode: separate
+training:
+  batchsize: 256
+  train_epoches: 5
+  lr: 0.0001
+  gradient_accumulation_steps: 1
+  evaluate_num_per_epoch: 2
+  random_seed: 42
+  device: cuda
+model:
+  down_dim: 8
+  mode: train_decoder
+  finetune_encoder_weight_path: /home/hanlab/2022_zzm/InstructNA_new/output/model_save/seperately_test/encoder/checkpoint-2600
+checkpoint:
+  save_path: /home/hanlab/2022_zzm/InstructNA_new/output/model_save/functional_SELEX/IL-2/
+  max_save_num: 3
+wandb:
+  enable: true
+  project: InstructNA_separately_train
+  exp_name: functional_SELEX_IL_2
+  wandb_key: fdc6faaa57d223d86bb721deb5e502f42eb0ea9e

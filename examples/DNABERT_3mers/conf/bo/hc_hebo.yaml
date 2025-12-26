@@ -1,0 +1,5 @@
+type: HC-HEBO
+cycle_nums: 2
+batchsize: 10
+init_search_r: 5.0
+min_r: 1.25

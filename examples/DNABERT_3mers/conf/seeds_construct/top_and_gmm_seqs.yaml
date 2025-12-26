@@ -1,0 +1,12 @@
+defaults:
+  - base/base.yaml
+  - _self_
+
+top:
+  enable: true
+  top_k: 10
+
+gmm:
+  enable: true
+  tsne_visual: false
+

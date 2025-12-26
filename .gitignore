@@ -1,0 +1,10 @@
+data/*
+!data/test_data/
+!data/test_data/**
+InstructNA_frameworks.egg-info/
+nupack-4.0.2.0/
+torch_clustering/
+output/*
+examples/DNABERT_3mers/cls_train.py
+examples/DNABERT_3mers/.hydra
+.gitignore
