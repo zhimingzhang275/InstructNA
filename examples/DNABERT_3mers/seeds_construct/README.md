@@ -90,7 +90,7 @@ AATTAGCGACTAATTACAAA,125
 Then run the final seed selection script:
 
 ```bash
-python 3_final_seed_selection.py \
+python 3_cluster_based_final_seed_selection.py \
   base.data.seq_acts=/PATH/to/constructed_csv_file.csv \
   base.model.InstructNA_model_path=/PATH/to/InstructNA_MODEL_CKPT \
   selection_k=k # the selected sequences number
