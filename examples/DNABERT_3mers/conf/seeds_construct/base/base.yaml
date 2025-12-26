@@ -2,11 +2,10 @@ seed: 42
 device: cuda   # cpu | cuda
 
 data:
-  fastq_dir: /home/hanlab/2022_zzm/InstructNA_new/data/CELL_SELEX_2013/SELEX_data/Srebf1_TACATT20NCG_Z_4/Srebf1_TACATT20NCG_Z_4.fastq             # SELEX fastq file (user set)
-  seq_acts: /home/hanlab/2022_zzm/InstructNA_new/examples/DNABERT_3mers/seeds_construct/seeds_construct_output/all_top_and_GMM_seqs.csv           # sequence activity csv (seq,activity) (user set)
+  fastq_dir: null             # SELEX fastq file (user set)
+  seq_acts: null           # sequence activity csv (seq,activity) (user set)
 
 
 model:
-  InstructNA_model_path: /home/hanlab/2022_zzm/InstructNA_new/output/model_save/seperately_Srebf1/final_model       # Trained InstructNA model CKPT (user set)
-
+  InstructNA_model_path: null       # Trained InstructNA model CKPT (user set)
 output_dir: ./seeds_construct_output/

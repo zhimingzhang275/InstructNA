@@ -4,9 +4,9 @@ defaults:
 
 paths:
   SELEX_path: null # must be provided, format is one sequence per line
-  seq_act_path: /home/hanlab/2022_zzm/InstructNA_new/output/bo_results/funtional_SELEX/IL-2/HC-HEBO_gen_seq.csv
-  InstructNA_model_path: /home/hanlab/2022_zzm/InstructNA_new/output/model_save/
-  BO_output_dir: /home/hanlab/2022_zzm/InstructNA_new/output/bo_results/
+  seq_act_path: null  # must be provided, format is csv with two columns: sequence, activity
+  InstructNA_model_path: null  # must be provided, trained InstructNA model checkpoint
+  BO_output_dir: output/bo_results/
 
 primer:
   f_primer: null

@@ -6,7 +6,7 @@ defaults:
 seed_num: 42
 
 paths:
-  fastq: /home/hanlab/2022_zzm/InstructNA_new/data/CELL_SELEX_2013/SELEX_data/Dbp_TAAATG20NCG_Z_4/Dbp_TAAATG20NCG_Z_4.fastq
-  label: /home/hanlab/2022_zzm/InstructNA_new/data/CELL_SELEX_2013/SELEX_data/Dbp_TAAATG20NCG_Z_4/pTH3831_HK_8mer.raw
-  model: /home/hanlab/2022_zzm/InstructNA_new/output/model_save/seperately_Dbp/final_model
-  output: ./bo_outputs
+  fastq: null  # must be provided, format is standard fastq file
+  label: null  # must be provided
+  model: null  # must be provided, trained InstructNA model checkpoint
+  output: bo_outputs

@@ -1,5 +1,5 @@
 dataset:
-  dir: /home/hanlab/2022_zzm/InstructNA_new/data/function_SELEX/IL-2/R4/InstructNA_seq_input.txt
+  dir: null  # A file containing one sequence per line must be provided.
   train_val_split_ratio: 0.9
 
 dataloader:
@@ -24,14 +24,14 @@ model:
   finetune_encoder_weight_path: null  #only used when model.mode is 'train_decoder' and run.mode is 'only_decoder'
 
 checkpoint:
-  save_path: /home/hanlab/2022_zzm/InstructNA_new/output/model_save/
+  save_path: output/model_save/
   max_save_num: 3
 
 wandb:
   enable: false
   project: InstructNA_separately_train
-  exp_name: functional_SELEX_IL_2
-  wandb_key: fdc6faaa57d223d86bb721deb5e502f42eb0ea9e
+  exp_name: SELEX
+  wandb_key: null  # user set
 
 
 hydra:
