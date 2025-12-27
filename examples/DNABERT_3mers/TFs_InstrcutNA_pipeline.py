@@ -141,7 +141,7 @@ def get_seeds_seq(fastq_dir,label_dir=None,InstructNA_model:InstructNA =None,tok
     s1_s2_s3_seq_score=dict(zip(seeds, scores))
     
     
-    final_seeds,final_seeds_act=select_max_activity_by_cluster(s1_s2_s3_seq_score, InstructNA_model.encoder, tokenizer,output_path=os.path.join(output_dir,"final_seeds.csv"), verbose=True)
+    final_seeds,final_seeds_act=select_max_activity_by_cluster(s1_s2_s3_seq_score, InstructNA_model.encoder, tokenizer,output_path=output_dir, verbose=True)
     
     
     with open(os.path.join(output_dir, "s1_s2_s3.csv"), "w") as f:

@@ -55,8 +55,8 @@ AATTAGCTTTAATTTTATTA
 
 ### Running the Training Script
 After preparing the dataset, launch the training process with the following command:
-```python
-python examples/DNABERT_3mers/separately_train.py dataset.dir=/PATH/TO/DATASET
+```bash
+python examples/DNABERT_3mers/separately_train.py dataset.dir=/PATH/TO/DATASET # one sequence per line
 ```
 
 For detailed parameter configurations, please refer to `examples/DNABERT_3mers/conf/separately_train.yaml`.
@@ -91,11 +91,14 @@ GGCTGTCTTCCTCCAGAATCTAACTCCGGG,GGCTGTCTTCCTCCAGAATCTAACTCCGGG,0.012030075
 
 Run the following command to generate new candidate sequences:
 
-```python
+```bash
 python examples/DNABERT_3mers/single_HC-HEBO_inference.py \  
-  paths.SELEX_path=/PATH/TO/DATASET \                   # format: one SELEX sequence per line 
-  paths.seq_act_path=/PATH/TO/SEQ_ACT_PATH \            # sequence–activity file 
-  paths.InstructNA_model_path=/PATH/TO/INSTRUCTNA_CKPT  #  InstructNA model checkpoint
+  # /PATH/TO/DATASET: one SELEX sequence per line 
+  paths.SELEX_path=/PATH/TO/DATASET \
+  # sequence–activity file             
+  paths.seq_act_path=/PATH/TO/SEQ_ACT_PATH \
+  # InstructNA model checkpoint
+  paths.InstructNA_model_path=/PATH/TO/INSTRUCTNA_CKPT  
 ```
 For detailed parameter settings and advanced options, please refer to: `examples/DNABERT_3mers/conf/single_hc_hebo_inference.yaml`.
 
@@ -140,16 +143,19 @@ To validation the performance of InstructNA. We use the public SELEX datasets fr
 ## 1. Train
 ```python
 python examples/DNABERT_3mers/separately_train.py \
-  dataset.dir=data/test_data/Srebf1_train_data.csv
+  dataset.dir=data/test_data/Srebf1_train_data.csv \
   checkpoint.save_path=output/model_save/
 ```
 
 ## 2. Run pipeline
-```python
+```bash
 python examples/DNABERT_3mers/TFs_InstrcutNA_pipeline.py \
-  paths.fastq=data/test_data/Srebf1_TACATT20NCG_Z_4.fastq \ # TF's SELEX fastq file
-  paths.label=data/test_data/pTH0914_HK_8mer.raw \          # TF's PBM label data
-  paths.model= output/model_save/final_model                # TF's InstructNA model checkpoint 
+  # TF's SELEX fastq file
+  paths.fastq=data/test_data/Srebf1_TACATT20NCG_Z_4.fastq \
+  # TF's PBM label data
+  paths.label=data/test_data/pTH0914_HK_8mer.raw \
+  # TF's InstructNA model checkpoint 
+  paths.model= output/model_save/final_model                
 ```
 
 For detailed parameter settings and advanced options, please refer to: `examples/DNABERT_3mers/conf/TFs_pipeline.yaml`.
