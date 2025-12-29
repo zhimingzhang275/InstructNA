@@ -103,13 +103,12 @@ def main(cfg: DictConfig):
 
     if cfg.base.data.seq_acts is None:
         raise ValueError("data.seq_acts must be provided")
-    s1_s2_selected_path = os.path.join(cfg.base.output_dir, "s1_s2_selected.csv")
-    cluster_based_seeds_selection(cfg.base.data.seq_acts, model.encoder, tokenizer, s1_s2_selected_path,k=10)
+    cluster_based_seeds_selection(cfg.base.data.seq_acts, model.encoder, tokenizer, cfg.base.output_dir,k=10)
     s3_seqs_path=os.path.join(cfg.base.output_dir, "near_seqs_in_SELEX.csv")
     _,seq_fre_dir=fastq_to_csv_with_counts(cfg.base.data.fastq_dir, os.path.join(cfg.base.output_dir, "fastq_counts.csv"))
     get_near_seq(
         seq_fre_dir,
-        s1_s2_selected_path,
+        cfg.base.data.seq_acts,
         model.encoder,
         tokenizer,
         output_dir=s3_seqs_path

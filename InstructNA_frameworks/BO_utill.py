@@ -8,7 +8,7 @@ from tqdm import tqdm
 from InstructNA_frameworks.utills import DNA_score_compute
 import copy
 import os
-from InstructNA_frameworks.filter_condition import check_conditions
+
 
 
 
@@ -402,8 +402,10 @@ def run_one_grouped_BO(
     generated_seq_set = set()
     group_affinities = {}  # {init_seq: [[seq1, score1], [seq2, score2], ...]}
     all_seq_Kd = {}
-
-
+    
+    if use_check_conditions:
+        from InstructNA_frameworks.filter_condition import check_conditions
+        
     if isinstance(Kd_seq_path_or_dict, dict):
         for seq, kd in Kd_seq_path_or_dict.items():
             kd = float(kd)

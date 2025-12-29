@@ -9,4 +9,4 @@ paths:
   fastq: null  # must be provided, format is standard fastq file
   label: null  # must be provided
   model: null  # must be provided, trained InstructNA model checkpoint
-  output: bo_outputs
+  output: TF_pipeline_outputs
