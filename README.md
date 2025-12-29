@@ -21,6 +21,8 @@
 ```bash
 conda create -n InstructNA python=3.9
 conda activate InstructNA
+git clone https://github.com/zhimingzhang275/InstructNA.git
+cd InstructNA
 pip install -r requirements.txt
 ```
 
