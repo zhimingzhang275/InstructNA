@@ -157,7 +157,7 @@ python examples/DNABERT_3mers/TFs_InstrcutNA_pipeline.py \
   # TF's PBM label data
   paths.label=data/test_data/pTH0914_HK_8mer.raw \
   # TF's InstructNA model checkpoint 
-  paths.model= output/model_save/final_model                
+  paths.model=output/model_save/final_model                
 ```
 
 For detailed parameter settings and advanced options, please refer to: `examples/DNABERT_3mers/conf/TFs_pipeline.yaml`.
