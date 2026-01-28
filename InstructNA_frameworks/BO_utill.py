@@ -342,7 +342,7 @@ def run_grouped_BO(
                             tmp_cur_search_r = 1.1 ** (unique_gen_tries+1) * cur_search_r
                             sample_T=1
                         sample_T=sample_T+0.1
-                        print(f"Current search radius is {tmp_cur_search_r}, temperature is {sample_T}\n")
+                        # print(f"Current search radius is {tmp_cur_search_r}, temperature is {sample_T}\n")
                         next_point = BO_suggest(seq_KD, seq_embedding, num_to_gen=1,search_r=tmp_cur_search_r,fit_seq_embedding=all_seq_embedding,fit_seq_KD=all_seq_Kd)[0]
                         point_tensor = torch.tensor(next_point, dtype=torch.float32).to(device).reshape(1, -1, model_down_dim)
                         generated_seq = decode_func(point_tensor, InstructNA_model, tokenizer,
@@ -607,7 +607,7 @@ def run_global_BO( tokenizer,
                     
                 unique_gen_tries = 0
                 while core_seq in generated_seq_set:
-                    print(f"Duplicate {core_seq}, {unique_gen_tries}st retrying...")
+                    # print(f"Duplicate {core_seq}, {unique_gen_tries}st retrying...")
 
                     retry_point = BO_suggest(BO_seq_KD, seq_embedding, num_to_gen=bo_batchsize, center_based=False, upper_bound_tensor=search_bound["search_up_bound"], lower_bound_tensor=search_bound["search_lower_bound"])[0]
                     point_tensor = torch.tensor(retry_point, dtype=torch.float32).to(device).reshape(1, -1, model_down_dim)
